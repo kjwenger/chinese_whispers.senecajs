@@ -1,0 +1,50 @@
+{
+  "name": "chinese_whispers.senecajs",
+  "version": "0.1.0",
+  "description": "Microservices implementing the Chinese Whispers game with Seneca.js",
+  "main": "index.js",
+  "engines": {
+    "node": "^8.7.0",
+    "npm": "^5.4.2"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "dependencies": {
+    "google-translate-api": "^2.3.0",
+    "joi": "^13.0.0",
+    "nconf": "^0.8.5",
+    "seneca": "^3.4.3",
+    "yandex-translate": "^2.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.1",
+    "standard": "^10.0.3"
+  },
+  "scripts": {
+    "lint:js": "standard .",
+    "lint": "npm run lint:js",
+    "test:unit": "mocha test/",
+    "test": "npm run lint & npm run test:unit",
+    "start": "node index --seneca.log.print",
+    "watch": "nodemon index --seneca.log.print"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kjwenger/chinese_whispers.senecajs.git"
+  },
+  "keywords": [
+    "chinese",
+    "whispers",
+    "seneca.js",
+    "microservice",
+    "node.js"
+  ],
+  "author": "Klaus Wenger <kjwenger@yahoo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kjwenger/chinese_whispers.senecajs/issues"
+  },
+  "homepage": "https://github.com/kjwenger/chinese_whispers.senecajs#readme"
+}
