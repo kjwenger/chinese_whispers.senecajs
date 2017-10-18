@@ -3,6 +3,14 @@
   "version": "0.1.0",
   "description": "Microservices implementing the Chinese Whispers game with Seneca.js",
   "main": "index.js",
+  "scripts": {
+    "lint:js": "standard .",
+    "lint": "npm run lint:js",
+    "test:unit": "mocha --recursive test/ --seneca.log.quiet",
+    "test": "npm run lint & npm run test:unit",
+    "start": "node index --seneca.log.print",
+    "watch": "nodemon index --seneca.log.print"
+  },
   "engines": {
     "node": "^8.7.0",
     "npm": "^5.4.2"
@@ -12,6 +20,7 @@
     "test": "test"
   },
   "dependencies": {
+    "debug": "^3.1.0",
     "google-translate-api": "^2.3.0",
     "joi": "^13.0.0",
     "nconf": "^0.8.5",
@@ -19,16 +28,10 @@
     "yandex-translate": "^2.1.1"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
     "nodemon": "^1.12.1",
     "standard": "^10.0.3"
-  },
-  "scripts": {
-    "lint:js": "standard .",
-    "lint": "npm run lint:js",
-    "test:unit": "mocha test/",
-    "test": "npm run lint & npm run test:unit",
-    "start": "node index --seneca.log.print",
-    "watch": "nodemon index --seneca.log.print"
   },
   "repository": {
     "type": "git",

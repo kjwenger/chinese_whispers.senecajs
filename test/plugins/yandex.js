@@ -1,10 +1,11 @@
 const seneca = require('seneca')()
 const expect = require('chai').expect
+const config = require('../../config')
 
-seneca.use('../../lib/plugins/google')
+seneca.use('../../lib/plugins/yandex', {key: config.YANDEX_TRANSLATE_API_KEY})
 
-describe('google plugin', () => {
-    describe('with role google and cmd translate', () => {
+describe('yandex plugin', () => {
+    describe('with role yandex and cmd translate', () => {
         const variants = [
             {
                 in: 'Hi, neighbor!',
@@ -16,14 +17,14 @@ describe('google plugin', () => {
         variants.forEach(variant => {
             it(`should do from "${variant.from}" in "${variant.in}" to "${variant.to}" out "${variant.out}"`, () => {
                 seneca.act({
-                        role: 'google',
+                        role: 'yandex',
                         cmd: 'translate',
                         text: variant.in,
                         from: variant.from,
                         to: variant.to}, (err, res) => {
                     expect(err).to.be.null
-                    expect(res).to.have.property('in', variants.in)
-                    expect(res).to.have.property('out', variants.out)
+                    expect(res).to.have.property('in', variant.in)
+                    expect(res).to.have.property('out', variant.out)
                 })
             })
         })
