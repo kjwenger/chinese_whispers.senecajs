@@ -9,9 +9,12 @@
     "test:unit": "mocha --recursive test/ --seneca.log.quiet",
     "test": "npm run lint & npm run test:unit",
     "client": "node client --seneca.log.print",
-    "monitor": "node monitor --seneca.log.print",
-    "start": "node service --seneca.log.print",
-    "watch": "nodemon service --seneca.log.print"
+    "start:monitor": "node monitor --seneca.log.print",
+    "start:service": "node service --seneca.log.print",
+    "start": "npm run start:service",
+    "watch:monitor": "nodemon monitor --seneca.log.print",
+    "watch:service": "nodemon service --seneca.log.print",
+    "watch": "npm run watch:service"
   },
   "engines": {
     "node": "^8.7.0",
@@ -22,6 +25,7 @@
     "test": "test"
   },
   "dependencies": {
+    "async": "^2.5.0",
     "debug": "^3.1.0",
     "google-translate-api": "^2.3.0",
     "joi": "^13.0.0",

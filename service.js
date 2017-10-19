@@ -1,6 +1,7 @@
 const config = require('./config')
 
-require('seneca')({tag: 'chinese_whispers', log: 'silent'})
+require('seneca')({tag: 'chinese_whispers', log: 'silent', timeout: 10000})
+    .test(console.log)
     .ready(console.log)
     .use('./lib/plugins/google')
     .use('./lib/plugins/yandex', {key: config.YANDEX_TRANSLATE_API_KEY})
@@ -10,7 +11,7 @@ require('seneca')({tag: 'chinese_whispers', log: 'silent'})
         isbase: true,
         pins: [
             {role: 'translator', from: 'en', to: 'de'},
-            {role: 'translator', from: 'de', to: 'fr'},
+            {role: 'translator', from: 'de', to: 'fr', provider: 'yandex'},
             {role: 'conductor'}
         ]
     })
