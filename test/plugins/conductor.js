@@ -1,12 +1,12 @@
-const debug = require('debug')('chinese_whispers:transferer-test')
+const debug = require('debug')('chinese_whispers:conductor-test')
 const _ = require('underscore')
 const Seneca = require('seneca')
 const config = require('../../config')
 const variants = require('./variants.json')
 const _act = require('./_act')
 
-describe.only('transferer', function () {
-    describe('with role: transferer, cmd convey', function () {
+describe.only('conductor', function () {
+    describe('with role: conductor, cmd convey', function () {
         this.timeout(10000)
 
         let seneca
@@ -20,12 +20,12 @@ describe.only('transferer', function () {
                 .use('../../lib/plugins/google')
                 .use('../../lib/plugins/yandex', {key: config.YANDEX_TRANSLATE_API_KEY})
                 .use('../../lib/plugins/translator')
-                .use('../../lib/plugins/transferer')
+                .use('../../lib/plugins/conductor')
                 // .use('mesh', {
                 //     isbase: true,
                 //     listen: [
                 //         {pin: 'role:translator,cmd:translate'},
-                //         {pin: 'role:transferer,cmd:convey'}
+                //         {pin: 'role:conductor,cmd:convey'}
                 //     ]
                 // })
                 .listen()
@@ -42,7 +42,7 @@ describe.only('transferer', function () {
             it(title, function (done) {
                 const seneca = Seneca({log: 'test'})
                     .use('mesh')
-                _act.call(this, seneca, _.extend(variant, {role: 'transferer', cmd: 'convey'}), done, debug)
+                _act.call(this, seneca, _.extend(variant, {role: 'conductor', cmd: 'convey'}), done, debug)
             })
         })
     })

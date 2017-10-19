@@ -1,11 +1,19 @@
-require('seneca')({log: 'test'})
+require('seneca')({tag: 'chinese_whispers', log: 'test'})
     .use('mesh')
-    .act({format: 'hex', color: 'blue'}, (err, res) => {
-        console.log('color:', res.color)
+    .ready(function (err) {
+        if (err) return console.error(err)
+        this.act({
+            role: 'translator',
+            cmd: 'translate',
+            text: 'Hi, neighbor!',
+            from: 'en',
+            to: 'de'
+        }, function (err, res) {
+            if (err) return console.error(err)
+            console.log(JSON.stringify(res, null, 2))
+            this.close(function (err) {
+
+            })
+        })
     })
-//    .act({
-//        role: 'translator',
-//        cmd: 'translate',
-//        text: 'Hi, neighbor!',
-//        from: 'en',
-//        to: 'fr'}, console.log)
+    .client()
