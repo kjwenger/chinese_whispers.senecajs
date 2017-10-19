@@ -2,14 +2,14 @@
   "name": "chinese_whispers.senecajs",
   "version": "0.1.0",
   "description": "Microservices implementing the Chinese Whispers game with Seneca.js",
-  "main": "index.js",
+  "main": "translator.js",
   "scripts": {
     "lint:js": "standard .",
     "lint": "npm run lint:js",
     "test:unit": "mocha --recursive test/ --seneca.log.quiet",
     "test": "npm run lint & npm run test:unit",
-    "start": "node index --seneca.log.print",
-    "watch": "nodemon index --seneca.log.print"
+    "start": "node translator --seneca.log.print",
+    "watch": "nodemon translator --seneca.log.print"
   },
   "engines": {
     "node": "^8.7.0",
@@ -25,6 +25,9 @@
     "joi": "^13.0.0",
     "nconf": "^0.8.5",
     "seneca": "^3.4.3",
+    "seneca-balance-client": "^0.6.1",
+    "seneca-mesh": "^0.11.0",
+    "underscore": "^1.8.3",
     "yandex-translate": "^2.1.1"
   },
   "devDependencies": {

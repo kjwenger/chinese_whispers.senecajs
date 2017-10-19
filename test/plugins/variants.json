@@ -1,0 +1,11 @@
+[
+  {
+    "role": "translator",
+    "cmd": "translate",
+    "text": "Hi, neighbor!",
+    "in": "Hi, neighbor!",
+    "out": "Hallo, Nachbar!",
+    "from": "en",
+    "to": "de"
+  }
+]
