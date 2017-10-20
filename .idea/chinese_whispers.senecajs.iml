@@ -25,5 +25,6 @@
     <orderEntry type="library" name="yeoman-generator-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="hapi-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="request-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="hoek-DefinitelyTyped" level="application" />
   </component>
 </module>
