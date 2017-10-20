@@ -1,12 +1,17 @@
+/* global process */
 const nconf = require('nconf')
 const joi = require('joi')
 const pkg = require('./package.json')
 
-nconf.argv().env().file('config.json')
+nconf.argv().env().file('config.json').defaults({
+    PORT: 8910
+})
 
 const config = {
     NAME: pkg.name,
     VERSION: pkg.version,
+
+    PORT: nconf.get('PORT'),
 
     YANDEX_TRANSLATE_API_KEY: nconf.get('YANDEX_TRANSLATE_API_KEY')
 }
@@ -14,6 +19,8 @@ const config = {
 const schema = joi.object().keys({
     NAME: joi.string().required(),
     VERSION: joi.string().required(),
+
+    PORT: joi.number().integer().required(),
 
     YANDEX_TRANSLATE_API_KEY: joi.string().required()
 })

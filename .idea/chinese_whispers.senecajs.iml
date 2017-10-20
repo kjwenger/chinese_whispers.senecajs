@@ -11,17 +11,19 @@
     <orderEntry type="library" name="seneca-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="chai-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="mocha-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="async-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="bluebird-DefinitelyTyped" level="application" />
-    <orderEntry type="library" name="joi-DefinitelyTyped" level="application" />
-    <orderEntry type="library" name="nconf-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="debug-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="express-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="joi-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="mock-require-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="nconf-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="pluralize-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="sinon-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="underscore-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="underscore.string-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="yeoman-generator-DefinitelyTyped" level="application" />
-    <orderEntry type="library" name="async-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="hapi-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="request-DefinitelyTyped" level="application" />
   </component>
 </module>

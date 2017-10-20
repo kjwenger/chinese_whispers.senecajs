@@ -1,8 +1,8 @@
+const debug = require('debug')('chinese_whispers:service')
 const config = require('./config')
 
 require('seneca')({tag: 'chinese_whispers', log: 'silent', timeout: 10000})
-    .test(console.log)
-    .ready(console.log)
+    .ready(err => debug('seneca.ready() err:', err))
     .use('./lib/plugins/liar', {provider: 'yandex', lie: `It's YUGE!`})
     .use('./lib/plugins/google')
     .use('./lib/plugins/yandex', {key: config.YANDEX_TRANSLATE_API_KEY})

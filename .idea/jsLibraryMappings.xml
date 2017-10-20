@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="JavaScriptLibraryMappings">
-    <file url="PROJECT" libraries="{async-DefinitelyTyped, chai-DefinitelyTyped, mocha-DefinitelyTyped, seneca-DefinitelyTyped}" />
+    <file url="PROJECT" libraries="{bluebird-DefinitelyTyped, chai-DefinitelyTyped, debug-DefinitelyTyped, express-DefinitelyTyped, hapi-DefinitelyTyped, joi-DefinitelyTyped, mocha-DefinitelyTyped, mock-require-DefinitelyTyped, nconf-DefinitelyTyped, pluralize-DefinitelyTyped, request-DefinitelyTyped, seneca-DefinitelyTyped, sinon-DefinitelyTyped, underscore-DefinitelyTyped, underscore.string-DefinitelyTyped, yeoman-generator-DefinitelyTyped}" />
   </component>
 </project>
