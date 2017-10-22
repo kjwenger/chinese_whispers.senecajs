@@ -1,5 +1,6 @@
 const debug = require('debug')('chinese_whispers:service')
 const config = require('./config')
+const _options = require('./_options')
 
 require('seneca')({tag: 'chinese_whispers', log: 'silent', timeout: 10000})
     .ready(err => debug('seneca.ready() err:', err))
@@ -8,11 +9,4 @@ require('seneca')({tag: 'chinese_whispers', log: 'silent', timeout: 10000})
     .use('./lib/plugins/yandex', {key: config.YANDEX_TRANSLATE_API_KEY})
     .use('./lib/plugins/translator')
     .use('./lib/plugins/conductor')
-    .use('mesh', {
-        isbase: true,
-        pins: [
-            {role: 'translator', from: 'en', to: 'de'},
-            {role: 'translator', from: 'de', to: 'fr', provider: 'liar'},
-            {role: 'conductor'}
-        ]
-    })
+    .use('mesh', _options(config))
