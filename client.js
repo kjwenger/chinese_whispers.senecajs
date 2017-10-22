@@ -1,7 +1,10 @@
 const debug = require('debug')('chinese_whispers:client')
 
-require('seneca')({tag: 'chinese_whispers', log: 'test', timeout: 10000})
-    .use('mesh')
+const seneca = require('seneca')({tag: 'chinese_whispers', log: 'test', timeout: 10000});
+const options = _options(config);
+if (options.discover.registry.active) seneca.use('consul-registry', config.SENECA_CONSUL_REGISTRY)
+seneca
+    .use('mesh', options)
     .ready(function (err0) {
         debug('seneca.ready() err0:', err0)
         if (err0) {
