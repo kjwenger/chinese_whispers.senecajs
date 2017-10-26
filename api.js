@@ -1,8 +1,9 @@
 const debug = require('debug')('chinese_whispers:api')
 const _ = require('underscore')
 const hapi = require('hapi')
+const hoek = require('hoek')
 const httpMethods = require('./lib/utilities/http/methods')
-const {_validateQuery} = require('./lib/routes/_validate')
+const {_validateQuery, _validatePayload} = require('./lib/routes/_validate')
 const _hapiSwagger = require('./lib/routes/_hapiSwagger')
 const _handler = require('./lib/routes/_handler')
 const config = require('./config')
@@ -59,8 +60,7 @@ seneca
             return _handler(request, reply, 'conductor', 'convey', seneca)
         }
         const _description = 'Return all the chained translation from one locale to another locale of a posted chinese whisper'
-        server.route({
-            method: httpMethods.GET,
+        const _route = {
             path: '/api/whispers',
             config: {
                 description: _description,
@@ -73,7 +73,22 @@ seneca
                 }
             },
             handler: _conveyHandler
-        })
+        };
+        server.route([
+            hoek.applyToDefaults(_route, {
+                method: httpMethods.GET,
+            }),
+            hoek.applyToDefaults(_route, {
+                method: httpMethods.POST,
+                config: {
+                    validate: {
+                        query: _validateQuery,
+                        payload: _validatePayload
+                    }
+                }
+            })
+
+        ])
 
         server.start(function () {
             console.log('api', server.info.host, server.info.port)

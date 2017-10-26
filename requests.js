@@ -16,7 +16,7 @@ function requests() {
             debug('request.get() body:', body)
             if (error) console.error('error:', error)
             console.log('status code:', response && response.statusCode)
-            console.log('body:', body)
+            console.log('body:', JSON.stringify(JSON.parse(body), null, 4))
         }
     )
     request.post(
@@ -30,7 +30,7 @@ function requests() {
             debug('request.post() body:', body)
             if (error) console.error('error:', error)
             console.log('status code:', response && response.statusCode)
-            console.log('body:', body)
+            console.log('body:', JSON.stringify(JSON.parse(body), null, 4))
         }
     )
 
