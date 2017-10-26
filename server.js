@@ -21,20 +21,21 @@ server.register({register: chairo}, function (err) {
         return process.exit(1)
     }
 
-    const seneca = server.seneca
     const options = _options(config)
+    const seneca = server.seneca
+    // seneca.test('print')
     if (options.discover.registry.active) seneca.use('consul-registry', config.SENECA_CONSUL_REGISTRY)
     seneca
         .use('mesh', options)
-        .ready(err => {
-            debug('server.register({register: chairo}) seneca.ready() err:', err)
-            if (err) throw err
-        })
         .use('./lib/plugins/liar', {provider: 'yandex', lie: `It's YUGE!`})
         .use('./lib/plugins/google')
         .use('./lib/plugins/yandex', {key: config.YANDEX_TRANSLATE_API_KEY})
         .use('./lib/plugins/translator')
         .use('./lib/plugins/conductor')
+        .ready(err => {
+            debug('server.register({register: chairo}) seneca.ready() err:', err)
+            if (err) throw err
+        })
 })
 
 server.route(routes)

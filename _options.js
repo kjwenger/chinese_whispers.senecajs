@@ -10,6 +10,7 @@ module.exports = function(config = require('./config')) {
     const host = config.SENECA_MESH_HOST
     const port = config.SENECA_MESH_PORT
     const isbase = config.SENECA_MESH_ISBASE
+    const pin = config.SENECA_MESH_PIN
     const pins = config.SENECA_MESH_PINS
     const bases = config.SENECA_MESH_BASES
     const broadcast = config.SENECA_MESH_BROADCAST
@@ -17,6 +18,7 @@ module.exports = function(config = require('./config')) {
     debug('isbase:', isbase)
     if (host) debug('host:', host)
     if (port) debug('port:', port)
+    if (pin) debug('pin:', pin)
     if (pins) debug('pins:', pins)
     if (bases) debug('bases:', bases)
     if (broadcast) debug('broadcast:', broadcast)
@@ -26,7 +28,9 @@ module.exports = function(config = require('./config')) {
         isbase: isbase
     }
     if (host) options.host = host
-    if (pins && pins.length) options.pins = pins
+    if (port) options.port = port
+    if (pin) options.pin = pin
+    else if (pins && pins.length) options.pins = pins
     if (bases) options.bases = bases
     options.discover = options.discover || {}
     options.discover.registry = options.discover.registry || {}

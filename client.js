@@ -1,10 +1,13 @@
 const debug = require('debug')('chinese_whispers:client')
-
-const seneca = require('seneca')({tag: 'chinese_whispers', log: 'test', timeout: 10000});
+const config = require('./config')
+const _options = require('./_options')
 const options = _options(config);
+const seneca = require('seneca')({tag: 'client', log: 'silent', timeout: 10000});
+// seneca.test('print')
 if (options.discover.registry.active) seneca.use('consul-registry', config.SENECA_CONSUL_REGISTRY)
 seneca
     .use('mesh', options)
+    .client()
     .ready(function (err0) {
         debug('seneca.ready() err0:', err0)
         if (err0) {
@@ -29,4 +32,3 @@ seneca
             })
         })
     })
-    .client()
