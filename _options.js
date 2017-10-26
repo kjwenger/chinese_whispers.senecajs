@@ -23,11 +23,7 @@ module.exports = function(config = require('./config')) {
     if (registry) debug('registry:', registry)
 
     options = {
-        isbase: isbase,
-        dumpnet: false,
-        sneeze: {
-            silent: false
-        }
+        isbase: isbase
     }
     if (host) options.host = host
     if (pins && pins.length) options.pins = pins

@@ -24,14 +24,17 @@ server.register({register: chairo}, function (err) {
     const seneca = server.seneca
     const options = _options(config)
     if (options.discover.registry.active) seneca.use('consul-registry', config.SENECA_CONSUL_REGISTRY)
-    server.seneca
-        .ready(err => debug('server.register({register: chairo}) seneca.ready() err:', err))
+    seneca
+        .use('mesh', options)
+        .ready(err => {
+            debug('server.register({register: chairo}) seneca.ready() err:', err)
+            if (err) throw err
+        })
         .use('./lib/plugins/liar', {provider: 'yandex', lie: `It's YUGE!`})
         .use('./lib/plugins/google')
         .use('./lib/plugins/yandex', {key: config.YANDEX_TRANSLATE_API_KEY})
         .use('./lib/plugins/translator')
         .use('./lib/plugins/conductor')
-        .use('mesh', options)
 })
 
 server.route(routes)
