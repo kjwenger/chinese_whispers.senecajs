@@ -9,8 +9,8 @@ function requests() {
             + `?from=en`
             + `&to=de`
             + `&text=Hi, neighbor!`
-            + `&provider=google`,
-        function (error, response, body) {
+            // + `&provider=google`
+        , function (error, response, body) {
             debug('request.get() error:', error)
             debug('request.get() response:', response)
             debug('request.get() body:', body)
